@@ -1,5 +1,7 @@
 # chatApp
 
+npm install
+
 npm install -g babel-cli webpack-dev-server
 
 testServer:
