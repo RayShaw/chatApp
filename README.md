@@ -14,4 +14,4 @@ npm start
 frontend:
 npm run webpack
 
-localhost:8080
+localhost:7070
