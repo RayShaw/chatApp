@@ -67,7 +67,7 @@ function switchRoom(socket, roomId) {
     // leave 是异步的 应该定义一个数组[] 将leave()做成一个promise
     // 再Promise.all() 将数组进行执行 执行完后 再join到新的roomId
     var rooms = Object.keys(socket.rooms)
-    console.log("rooms", rooms)
+    // console.log("rooms", rooms)
     var promises = rooms.map((room, index) => {
         return new Promise((resolve, reject) => {
             socket.leave(room)

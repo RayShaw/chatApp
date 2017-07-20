@@ -8,8 +8,10 @@
     "testServer:watch": "npm run testServer -- --watch",
     "testClient": "mocha --compilers js:babel-core/register --require ./test/clientTestHelper.js ./test/client --recursive",
     "testClient:watch": "npm run testClient -- --watch",
-    "start": "babel-node src/server/server.js",
-    "auto-start": "nodemon --exec \"npm start\""
+    "start": "./node_modules/babel-cli/bin/babel-node.js src/server/server.js",
+    "g-start": "babel-node src/server/server.js",
+    "auto-start": "nodemon --exec \"npm start\"",
+    "webpack": "./node_modules/webpack-dev-server/bin/webpack-dev-server.js"
   },
   "babel": {
     "presets": [

@@ -2,8 +2,6 @@
 
 npm install
 
-npm install -g babel-cli webpack-dev-server
-
 testServer:
 npm run testServer
 
@@ -14,6 +12,6 @@ backend:
 npm start
 
 frontend:
-webpack-dev-server
+npm run webpack
 
 localhost:8080

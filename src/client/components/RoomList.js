@@ -5,6 +5,9 @@ class RoomList extends Component {
     isActive(room, currentRoom) {
         return room.get("id") === currentRoom
     }
+    switchRoom(room, currentRoom) {
+        if (room.get("id") !== currentRoom) this.props.switchRoom(room.get("id"))
+    }
     render() {
         const { rooms, currentRoom } = this.props
 
@@ -14,7 +17,7 @@ class RoomList extends Component {
                     rooms.map((room, index) => {
                         return (
                             <a className={this.isActive(room, currentRoom) ? "active" : ""}
-                                onClick={e => this.props.switchRoom(room.get("id"))}
+                                onClick={e => this.switchRoom(room, currentRoom)}
                                 key={index} href="#">
                                 {room.get("name")}
                             </a>

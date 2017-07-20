@@ -7,13 +7,13 @@ class MessageList extends Component {
     componentDidMount() {
         // Scroll to the bottom on initialization
         const node = ReactDOM.findDOMNode(this.messagesEnd)
-        node.scrollIntoView({ behavior: "smooth" })
+        if (node) node.scrollIntoView({ behavior: "smooth" })
     }
 
     componentDidUpdate() {
         // Scroll to the bottom on initialization
         const node = ReactDOM.findDOMNode(this.messagesEnd)
-        node.scrollIntoView({ behavior: "smooth" })
+        if (node) node.scrollIntoView({ behavior: "smooth" })
     }
     isSelf(message) {
         return this.props.username === message.get("user")
