@@ -5,7 +5,8 @@ import InputBox from "./InputBox"
 import RoomList from "./RoomList"
 import { newMessage, switchRoom, addRoom, removeRoom, setUsername } from "../actionCreators"
 
-if (!process.env.NODE_ENV || !process.env.NODE_ENV === "test")
+if (process.env.NODE_ENV === "test") { }
+else
     require("../css/style.css")
 
 class App extends Component {
@@ -48,7 +49,7 @@ class App extends Component {
         }))
     }
 
-    setUsername(){
+    setUsername() {
         let name = prompt("用名称")
         this.props.dispatch(setUsername(name))
     }

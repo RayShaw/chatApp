@@ -1,8 +1,9 @@
 import React, { Component } from "react"
 import ReactDOM from "react-dom"
 
-if (!process.env.NODE_ENV || !process.env.NODE_ENV === "test") 
-require("../css/style.css")
+if (process.env.NODE_ENV === "test") { }
+else
+    require("../css/style.css")
 
 class InputBox extends Component {
     handleSubmit(e) {
