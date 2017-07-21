@@ -1,6 +1,6 @@
 
 import { fromJS, Map } from "immutable"
-import { yymmddhhmm } from "../shared/utils/dateTime"
+import { yymmddhhmm } from "./shared/utils/dateTime"
 
 export function setState(state) {
     return {

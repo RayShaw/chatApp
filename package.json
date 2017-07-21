@@ -8,10 +8,16 @@
     "testServer:watch": "npm run testServer -- --watch",
     "testClient": "mocha --compilers js:babel-core/register --require ./test/clientTestHelper.js ./test/client --recursive",
     "testClient:watch": "npm run testClient -- --watch",
-    "start": "./node_modules/babel-cli/bin/babel-node.js src/server/server.js",
     "g-start": "babel-node src/server/server.js",
     "auto-start": "nodemon --exec \"npm start\"",
-    "webpack": "./node_modules/webpack-dev-server/bin/webpack-dev-server.js"
+
+    "start": "./node_modules/babel-cli/bin/babel-node.js src/app.js",
+    "webpack": "./node_modules/webpack-dev-server/bin/webpack-dev-server.js",
+
+    "clean": "rm -rf dist",
+    "build:client": "export NODE_ENV=production && webpack --progress --config webpack.config.js",
+    "build:server": "node_modules/babel-cli/bin/babel.js ./src/ -d ./dist --ignore node_modules,test,webpack*,client,build,dist",
+    "build": "npm run clean && npm run build:client && npm run build:server && cp -rf src/views dist/ && cp -rf src/public dist/ && cp -rf build dist/public/"
   },
   "babel": {
     "presets": [

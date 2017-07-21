@@ -1,22 +1,17 @@
 import express from "express"
 import { Server } from "http"
 
-const env = process.env.NODE_ENV;
-
 var app = express()
 var http = Server(app)
 
-// configs
-if (env != 'production') {
-  var rootPath = require('path').normalize(__dirname + '/../..');
-}
+const env = process.env.NODE_ENV;
 app.set('views', __dirname + '/views')
 app.set('view engine', 'ejs')
-app.use(express.static(rootPath + "/public"))
+app.use(express.static(__dirname + "/public"))
 
 var io = require('socket.io')(http);
-import { makeStore } from "./store"
-import listenWebSocket from "./io.js"
+import { makeStore } from "./server/store"
+import listenWebSocket from "./server/io.js"
 
 const store = makeStore()
 listenWebSocket(io, store)
