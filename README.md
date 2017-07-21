@@ -23,8 +23,8 @@ npm run p-start
 
 ## Test
 ```
-#client:
+client:
 npm run testClient
-#server:
+server:
 npm run testServer
-
+```
