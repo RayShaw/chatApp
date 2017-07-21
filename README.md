@@ -1,17 +1,22 @@
 # chatApp
 
-npm install
 
+`npm install`
+
+## Development
+```
+# backend:
+npm start
+# frontend:
+npm run webpack
+```
+
+## Build
 testServer:
 npm run testServer
 
 testClient:
 npm run testClient
 
-backend:
-npm start
 
-frontend:
-npm run webpack
-
-localhost:7070
+=> localhost:7070
