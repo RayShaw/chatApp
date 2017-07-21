@@ -2,6 +2,7 @@
 
 const webpack = require("webpack")
 const path = require("path")
+const UglifyJSPlugin = require('uglify-es-webpack-plugin');
 
 const env = process.env.NODE_ENV;
 
@@ -20,6 +21,7 @@ const devServer = env == 'produciton' ? {} : {
         "**": "http://localhost:" + 3000
     }
 }
+
 
 const plugins = env == 'production' ? [] : [
     new webpack.HotModuleReplacementPlugin()
