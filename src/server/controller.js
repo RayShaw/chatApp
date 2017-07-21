@@ -21,7 +21,7 @@ export const indexCtrl = store => (req, res) => {
 	  </head>
 	  <body>
 	  	<div id="app">${appString}</div>
-	  	<script src="/build/boundle.js"></script>
+	  	<script src="/build/bundle.js"></script>
 	  </body>
 	  </html>
 	  `
