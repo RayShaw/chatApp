@@ -3,7 +3,10 @@ import React, { Component } from "react"
 import MessageList from "./MessageList"
 import InputBox from "./InputBox"
 import RoomList from "./RoomList"
-import { newMessage, switchRoom, addRoom, removeRoom } from "../actionCreators"
+import { newMessage, switchRoom, addRoom, removeRoom, setUsername } from "../actionCreators"
+
+if (!process.env.NODE_ENV || !process.env.NODE_ENV === "test")
+    require("../css/style.css")
 
 class App extends Component {
     getCurrentRoomName() {
@@ -44,6 +47,12 @@ class App extends Component {
             content: message,
         }))
     }
+
+    setUsername(){
+        let name = prompt("用名称")
+        this.props.dispatch(setUsername(name))
+    }
+
     render() {
         const { currentRoom, rooms, username, dispatch } = this.props
 
@@ -57,6 +66,8 @@ class App extends Component {
                     />
                     <button className="btn color-2"
                         onClick={this.addRoom.bind(this)}> + 创建聊天室</button>
+                    <button className="btn color-3" style={{ marginTop: 10 }}
+                        onClick={this.setUsername.bind(this)}> + 修改用户名</button>
                 </nav>
                 {!currentRoom ? <h2>请选择一个聊天室</h2> :
                     <section id="chat-main" className="flex">

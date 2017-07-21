@@ -2,11 +2,14 @@ import React, { Component } from "react"
 import Message from "./Message"
 import ReactDOM from "react-dom"
 
+if (!process.env.NODE_ENV || !process.env.NODE_ENV === "test") 
+    require("../css/style.css")
+
 class MessageList extends Component {
 
     componentDidMount() {
         // Scroll to the bottom on initialization
-        if (!process.env.NODE_ENV === "test") {
+        if (!process.env.NODE_ENV || !process.env.NODE_ENV === "test") {
             const node = ReactDOM.findDOMNode(this.messagesEnd)
             if (node) node.scrollIntoView({ behavior: "smooth" })
         }
@@ -14,7 +17,7 @@ class MessageList extends Component {
 
     componentDidUpdate() {
         // Scroll to the bottom on initialization
-        if (!process.env.NODE_ENV === "test") {
+        if (!process.env.NODE_ENV || !process.env.NODE_ENV === "test") {
             const node = ReactDOM.findDOMNode(this.messagesEnd)
             if (node) node.scrollIntoView({ behavior: "smooth" })
         }

@@ -7,7 +7,7 @@ var http = Server(app)
 const env = process.env.NODE_ENV;
 app.set('views', __dirname + '/views')
 app.set('view engine', 'ejs')
-app.use(express.static(__dirname + "/public"))
+// app.use(express.static(__dirname + "/public"))
 
 var io = require('socket.io')(http);
 import { makeStore } from "./server/store"

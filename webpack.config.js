@@ -35,18 +35,24 @@ const plugins = env == "production" ?
 const configs = {
     entry,
     module: {
-        rules: [{
-            test: /\.jsx?$/,
-            include: path.join(__dirname, "src"),
-            exclude: /node_modules/,
-            use: ["react-hot-loader", "babel-loader"]
-        }]
+        rules: [
+            {
+                test: /\.jsx?$/,
+                include: path.join(__dirname, "src"),
+                exclude: /node_modules/,
+                use: ["react-hot-loader", "babel-loader"]
+            },
+            {
+                test: /\.css$/,
+                include: path.join(__dirname, "src/client/css"),
+                use: ['style-loader', 'css-loader']
+            }
+        ]
     },
     output: {
         filename: "bundle.js",
         path: __dirname + "/build",
-        publicPath: "/build/",
-        // publicPath: "http://localhost:7070/build",
+        publicPath: "/build",
     },
     devServer,
     plugins,

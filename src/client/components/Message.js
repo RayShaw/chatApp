@@ -1,5 +1,8 @@
 import React, { Component } from "react"
 
+if (!process.env.NODE_ENV || !process.env.NODE_ENV === "test") 
+require("../css/style.css")
+
 class Message extends Component {
     render() {
         const { message, isSelf } = this.props
