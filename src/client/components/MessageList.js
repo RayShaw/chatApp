@@ -6,14 +6,18 @@ class MessageList extends Component {
 
     componentDidMount() {
         // Scroll to the bottom on initialization
-        const node = ReactDOM.findDOMNode(this.messagesEnd)
-        if (node) node.scrollIntoView({ behavior: "smooth" })
+        if (!process.env.NODE_ENV === "test") {
+            const node = ReactDOM.findDOMNode(this.messagesEnd)
+            if (node) node.scrollIntoView({ behavior: "smooth" })
+        }
     }
 
     componentDidUpdate() {
         // Scroll to the bottom on initialization
-        const node = ReactDOM.findDOMNode(this.messagesEnd)
-        if (node) node.scrollIntoView({ behavior: "smooth" })
+        if (!process.env.NODE_ENV === "test") {
+            const node = ReactDOM.findDOMNode(this.messagesEnd)
+            if (node) node.scrollIntoView({ behavior: "smooth" })
+        }
     }
     isSelf(message) {
         return this.props.username === message.get("user")

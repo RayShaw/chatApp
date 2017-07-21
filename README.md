@@ -16,7 +16,15 @@ npm run webpack
 ## Build
 ```
 npm run build
-export NODE_ENV=production && node dist/app.js
+npm run p-start
 ```
 
 => localhost:3000
+
+## Test
+```
+client:
+npm run testClient
+server:
+npm run testServer
+```
