@@ -11,12 +11,12 @@ npm start
 npm run webpack
 ```
 
-## Build
-testServer:
-npm run testServer
-
-testClient:
-npm run testClient
-
-
 => localhost:7070
+
+## Build
+```
+npm run build
+export NODE_ENV=production && node dist/app.js
+```
+
+=> localhost:3000
