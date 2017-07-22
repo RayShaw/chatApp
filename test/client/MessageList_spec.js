@@ -15,11 +15,11 @@ import {
 describe("MessageList", () => {
     it("render messages and my messages", () => {
         const messages = fromJS([
-            { user: "rayleigh", content: "some message", time: "23:23" },
-            { user: "shaw", content: "ss message", time: "12:12" },
+            { user: "rayleigh", content: "some message", time: "23:23", userId: "1111" },
+            { user: "shaw", content: "ss message", time: "12:12", userId: "2222" },
         ])
         const component = renderIntoDocument(
-            <MessageList username="rayleigh" messages={messages} />
+            <MessageList username="rayleigh" messages={messages} userId="1111"/>
         )
 
         const $messages = scryRenderedDOMComponentsWithTag(component, "li")

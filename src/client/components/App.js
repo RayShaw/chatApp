@@ -17,10 +17,10 @@ class App extends Component {
     }
 
     isOwner() {
-        if (!this.props.currentRoom || !this.props.username) return false
+        if (!this.props.currentRoom || !this.props.userId) return false
         const room = this.props.rooms.find(r => r.get("id") === this.props.currentRoom)
         if (!room) return false;
-        return room.get("owner") == this.props.username
+        return room.get("owner") == this.props.userId
     }
 
     getMessages() {
@@ -31,14 +31,14 @@ class App extends Component {
         var name = prompt("房间名称")
         if (!name) return alert("不能没有房间名称")
         this.props.dispatch(addRoom({
-            name, owner: this.props.username
+            name, owner: this.props.userId
         }))
     }
 
     removeRoom() {
         this.props.dispatch(switchRoom())
 
-        this.props.dispatch(removeRoom(this.props.currentRoom, this.props.username))
+        this.props.dispatch(removeRoom(this.props.currentRoom, this.props.userId))
     }
 
     sendMessage(message) {
@@ -46,16 +46,17 @@ class App extends Component {
             roomId: this.props.currentRoom,
             user: this.props.username,
             content: message,
+            userId: this.props.userId,
         }))
     }
 
     setUsername() {
-        let name = prompt("用名称")
-        this.props.dispatch(setUsername(name))
+        let name = prompt("用名称") || "匿名"
+        this.props.dispatch(setUsername(name, this.props.userId))
     }
 
     render() {
-        const { currentRoom, rooms, username, dispatch } = this.props
+        const { currentRoom, rooms, username, userId, dispatch } = this.props
 
         return (
             <div className="flex-row">
@@ -80,7 +81,7 @@ class App extends Component {
                                     className="btn sm color-5">X 删除该聊天室</button>
                             }
                         </header>
-                        <MessageList messages={this.getMessages()} username={username} />
+                        <MessageList messages={this.getMessages()} username={username} userId={userId} />
                         <InputBox sendMessage={this.sendMessage.bind(this)} />
                     </section>
                 }
@@ -101,6 +102,7 @@ function mapStateToProps(state) {
         currentRoom: state.get("currentRoom"),
         username: state.get("username"),
         messages: state.get("messages"),
+        userId: state.get("userId")
     }
 }
 

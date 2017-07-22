@@ -5,6 +5,8 @@ export default function rootReducer(state = Map(), action) {
         case "SET_STATE":
             return state.merge(Map(action.state))
         case "SET_USERNAME":
+            if(!action.userId) 
+                return state
             return state.set("username", action.username)
         case "SWITCH_ROOM":
             return state.set("currentRoom", action.roomId)

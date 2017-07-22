@@ -12,7 +12,7 @@ describe("server端核心Reducer", () => {
             { type: "ADD_ROOM", room: { id, name: "1", owner: "rayleigh" } },
             { type: "ADD_ROOM", room: { name: "2", owner: "shaw" } },
             { type: "ADD_ROOM", room: { name: "3", owner: "rayleigh" } },
-            { type: "REMOVE_ROOM", payload: { id: id, user: "rayleigh" } },
+            { type: "REMOVE_ROOM", payload: { id: id, userId: "rayleigh" } },
         ]
 
         const finalState = actions.reduce(coreReducer, undefined)
@@ -28,7 +28,7 @@ describe("server端核心Reducer", () => {
             addRoom({ id, name: "1", owner: "rayleigh" }),
             addRoom({ name: "2", owner: "shaw" }),
             addRoom({ name: "3", owner: "rayleigh" }),
-            removeRoom({ id: id, user: "rayleigh" }),
+            removeRoom({ id: id, userId: "rayleigh" }),
         ]
         const finalState = actions.reduce(coreReducer, undefined)
         console.log(finalState)

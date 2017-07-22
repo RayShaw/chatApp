@@ -5,7 +5,7 @@ import ReactDOM from "react-dom"
 // import App from "./components/App"
 
 import { createStore } from "redux"
-import rootReducer from "./reducer2"
+import rootReducer from "./reducer"
 import { setState, newMessage } from "./actionCreators"
 import { saveToStorage, getInitialState } from "./store.js"
 

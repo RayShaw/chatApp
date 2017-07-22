@@ -9,9 +9,11 @@ export function setState(state) {
     }
 }
 
-export function setUsername(username) {
+export function setUsername(username, userId) {
     return {
-        type: "SET_USERNAME", username
+        type: "SET_USERNAME",
+        username: username,
+        userId: userId,
     }
 }
 
@@ -23,13 +25,14 @@ export function switchRoom(roomId) {
     }
 }
 
-export function newMessage({ roomId, content, user, time }, isFromServer) {
+export function newMessage({ roomId, content, user, time, userId }, isFromServer) {
     return {
         type: "NEW_MESSAGE",
         meta: { remote: !isFromServer },
         message: {
             roomId, content: content || "", user,
-            time: yymmddhhmm()
+            time: yymmddhhmm(),
+            userId,
         }
     }
 }
@@ -43,10 +46,10 @@ export function addRoom(room) {
     }
 }
 
-export function removeRoom(id, user) {
+export function removeRoom(id, userId) {
     return {
         type: "REMOVE_ROOM",
-        payload: { id, user },
+        payload: { id, userId },
         meta: { remote: true },
     }
 }

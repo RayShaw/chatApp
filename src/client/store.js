@@ -16,6 +16,7 @@ export function getInitialState() {
             messages: {},
             username: prompt("用户名"),
             currentRoom: DEFAULT_ROOM,
+            userId: new Date().getTime().toString(),
         })
     }
 

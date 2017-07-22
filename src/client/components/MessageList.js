@@ -26,7 +26,8 @@ class MessageList extends Component {
         }
     }
     isSelf(message) {
-        return this.props.username === message.get("user")
+        // return this.props.username === message.get("user")
+        return this.props.userId === message.get("userId")
     }
     $getMessages(messages) {
         if (!messages || messages.size == 0) {

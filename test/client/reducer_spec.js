@@ -1,6 +1,6 @@
 import { fromJS } from "immutable"
 import { expect } from "chai"
-import rootReducer from "../../src/client/reducer2"
+import rootReducer from "../../src/client/reducer"
 
 import {
     newMessage, setState, switchRoom, setUsername
@@ -13,10 +13,11 @@ const fakeState = fromJS({
     ],
     currentRoom: "1",
     username: "rayleigh",
+    userId: "1111",
     messages: {
         "1": [
-            { user: "rayleigh", content: "some message", time: "12:12" },
-            { user: "shaw", content: "ss message", time: "12:13" },
+            { user: "rayleigh", content: "some message", time: "12:12", userId: "1111" },
+            { user: "shaw", content: "ss message", time: "12:13", userId: "2222"},
         ]
     }
 })
@@ -31,7 +32,7 @@ describe("client Root reducer", () => {
     })
 
     it("set username", () => {
-        const nextState = rootReducer(fakeState, setUsername("Shaw"))
+        const nextState = rootReducer(fakeState, setUsername("Shaw", "1111"))
         expect(nextState.get("username")).to.equal("Shaw")
     })
 
@@ -42,7 +43,7 @@ describe("client Root reducer", () => {
 
     it("send new message", () => {
         const action = newMessage({
-            roomId: "0", user: "rayleigh", content: "some message"
+            roomId: "0", user: "rayleigh", content: "some message", userId: "1111"
         })
         expect(action.message.time).to.be.ok
         const nextState = rootReducer(fakeState, action)
@@ -50,7 +51,7 @@ describe("client Root reducer", () => {
         expect(nextState.getIn(["messages", "0"]).size).to.equal(1)
         const nextNextState = rootReducer(fakeState, {
             type: "NEW_MESSAGE", message: {
-                roomId: "1", user: "shaw", time: "12:00", content: "some message"
+                roomId: "1", user: "shaw", time: "12:00", content: "some message", userId: "2222"
             }
         })
         expect(nextNextState.getIn(["messages", "1"]).size).to.equal(3)

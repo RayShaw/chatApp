@@ -35,7 +35,7 @@ describe("rooms", () => {
     it("能被创建者删除", () => {
         const state = removeRoom(mockState, {
             id: mockState.getIn(["rooms", 0, "id"]),
-            user: "rayleigh"
+            userId: "rayleigh"
         })
 
         expect(state.get("rooms").size).to.equal(0)
