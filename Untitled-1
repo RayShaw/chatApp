@@ -6,6 +6,7 @@
 
 
 {
+    userId,
     username,
     current,
     messages: {
